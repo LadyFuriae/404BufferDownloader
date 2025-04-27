@@ -106,8 +106,7 @@ def convert(mkv_video_path):
     except FileNotFoundError:
         
         print(f"Error: No se encontró el ejecutable de FFmpeg.")
-        print(f"Se intentó buscar en: {command[0]} (y posiblemente en el PATH)")
-        print("Asegúrate de que FFmpeg esté instalado y accesible.")
+        print(f"Se intentó buscar en: {command[0]}")
         return None
     except Exception as e:
         
