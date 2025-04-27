@@ -12,7 +12,7 @@ def get_download_path():
 def download_with_progress(stream, output_path, descripcion, YT):
     total_size = stream.filesize
     
-    # Crear barra de progreso
+   
     with tqdm(
         total=total_size,
         unit='B',
@@ -21,14 +21,14 @@ def download_with_progress(stream, output_path, descripcion, YT):
         desc=descripcion,
         leave=True
     ) as pbar:
-        # Función para actualizar la barra
+        
         def on_progress(chunk, _, bytes_remaining):
             downloaded = total_size - bytes_remaining
             pbar.update(downloaded - pbar.n)
         
-        # Registrar el callback en el objeto YouTube padre
+       
         YT.register_on_progress_callback(on_progress)
-        # Descargar el stream
+        
         file_path = stream.download(output_path=output_path)
         
     return file_path
